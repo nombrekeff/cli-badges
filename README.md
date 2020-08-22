@@ -1,10 +1,17 @@
-# cli-badges
+
+<div align="center">
+  
+  ![](https://vectr.com/kerff/ddbmvyZmm.svg?width=600&height=400&select=aNbKxciPh)
+  
+</div>
 
 Quirky little node-js library for generating badges for your cli apps.
 
+---
+
 ## Getting Started
 
-### Installing
+### Installing
 
 As usual, you need to install from npm/yarn:
 
