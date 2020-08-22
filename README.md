@@ -62,13 +62,13 @@ export function badge(
 
 ### Available Options
 
-- `labelBg` - background color for the label
+- `labelBg` - background [color](#colors) for the label
   - default: **blackBright**
-- `messageBg` - background color for the message
+- `messageBg` - background [color](#colors) for the message
   - default: **blue**
-- `labelColor` - text color for the label
+- `labelColor` - text [color](#colors) for the label
   - default: **white**
-- `messageColor` - text color for the message
+- `messageColor` - text [color](#colors) for the message
   - default: **white**
 - `labelStyle` - text style for the label - **[italic, bold]**
 - `messageStyle` - text style for the message - **[italic, bold]**
@@ -77,6 +77,12 @@ export function badge(
 - `messageWidth` - width of the message
   - default: **label length + 2**
 - `link` - Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_)
+
+### Colors
+
+`cli-badges` uses [`cli-color`](https://github.com/medikoo/cli-color#colors) internally for managing colors, you can check the list of available colors there.
+
+Take into account that when setting a color you don't need to pass the prefix `bg`, it's handled for you. ie: `blackBright` instead of `bgBlackBright`
 
 ### Links
 
@@ -89,14 +95,15 @@ badge('with', 'link', { link: 'https://link.com' });
 ```
 
 ## Support the project
+
 I tend to open source anything I can, adn love to help people that need help with the project.
 
 However, if you are using this project and happy with it or just want to encourage me to continue creating stuff, there are few ways you can do it :-
 
-* Starring and sharing the project 🚀
-* Reporting bugs 🐛
-* Sending feedback 
-* Or even coding :P
+- Starring and sharing the project 🚀
+- Reporting bugs 🐛
+- Sending feedback
+- Or even coding :P
 
 Thanks! ❤️
 
