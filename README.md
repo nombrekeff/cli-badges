@@ -1,7 +1,7 @@
 
 <div align="center">
   
-  ![](https://vectr.com/kerff/ddbmvyZmm.svg?width=600&height=400&select=aNbKxciPh)
+  ![](https://vectr.com/kerff/ddbmvyZmm.svg?width=600&height=300&select=aNbKxciPh)
   
   Quirky little node-js library for generating badges for your cli apps.
   
