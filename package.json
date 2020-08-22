@@ -1,0 +1,42 @@
+{
+  "name": "cli-badges",
+  "version": "1.0.0",
+  "description": "Quirky little node-js library for generating badges for your cli apps.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "files": [
+    "./index.js",
+    "./README.md",
+    "./output-example.png",
+    "./donate-output-example.png"
+  ],
+  "dependencies": {
+    "cli-color": "^2.0.0",
+    "terminal-link": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nombrekeff/cli-badges.git"
+  },
+  "keywords": [
+    "cli",
+    "badges",
+    "cli-badges",
+    "terminal",
+    "terminal-badges",
+    "console",
+    "console-badges"
+  ],
+  "author": "nombrekeff",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nombrekeff/cli-badges/issues"
+  },
+  "homepage": "https://github.com/nombrekeff/cli-badges#readme"
+}
