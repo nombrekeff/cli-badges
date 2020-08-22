@@ -5,7 +5,7 @@
   Quirky little node-js library for generating badges for your cli apps.
   
   ![GitHub file size in bytes](https://img.shields.io/github/size/nombrekeff/cli-badges/index.js?style=flat-square)
-  ![npm](https://img.shields.io/npm/v/cli-badges?label=version&style=flat-square)
+  [![npm](https://img.shields.io/npm/v/cli-badges?label=version&style=flat-square)](https://www.npmjs.com/package/cli-badges)
   
 </div>
 
