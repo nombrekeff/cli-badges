@@ -1,4 +1,3 @@
-
 <div align="center">
   
   ![](https://vectr.com/kerff/ddbmvyZmm.svg?width=600&height=300&select=aNbKxciPh)
@@ -21,6 +20,8 @@ $ npm install cli-badges
 
 ### Usage
 
+This is a simple example, using badges to display test results:
+
 ```js
 const { badge } = require('cli-badges');
 
@@ -40,6 +41,20 @@ console.log(failedBadge, successBadge, skippedBadge);
 The above would output something similar to the terminal:
 
 ![](./output-example.png)
+
+You could also create a donate badge with a link ([if supported](#links)):
+
+```js
+const { badge } = require('cli-badges');
+
+const donateBadge = badge('donate', 'ko-fi', {
+  link: 'https://ko-fi.com/logginjs',
+});
+
+console.log(donateBadge);
+```
+
+![](./donate-output-example.png)
 
 > ###### Example output is a mock, console output will vary slightly from terminal to terminal.
 
@@ -96,6 +111,8 @@ Take into account that when setting a color you don't need to pass the prefix `b
 ### Links
 
 You can output badges with a link attached to it, that can be clicked in some terminals.
+
+> #### ⚠︎ cli-badges will only output link if its supported by your terminal.
 
 > See [this](https://gist.github.com/egmontkob/eb114294efbcd5adb1944c9f3cb5feda) for information on supported terminals
 
