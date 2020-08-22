@@ -3,9 +3,9 @@
   
   ![](https://vectr.com/kerff/ddbmvyZmm.svg?width=600&height=400&select=aNbKxciPh)
   
+  Quirky little node-js library for generating badges for your cli apps.
+  
 </div>
-
-Quirky little node-js library for generating badges for your cli apps.
 
 ---
 
