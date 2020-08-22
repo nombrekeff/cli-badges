@@ -37,9 +37,11 @@ const successBadge = badge('success', '8', {
 console.log(failedBadge, successBadge, skippedBadge);
 ```
 
-The above would log something similar to:
+The above would output something similar to the terminal:
 
 ![](./output-example.png)
+
+> ###### Example output is a mock, console output will vary slightly from terminal to terminal.
 
 ## Badge Structure
 
