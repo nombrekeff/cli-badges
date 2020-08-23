@@ -1,7 +1,7 @@
 const clc = require('cli-color');
 const terminalLink = require('terminal-link');
 
-const padd = (string = '', width) => {
+const padd = (string, width) => {
     const sLength = string.length;
 
     if (!width) width = sLength + 2; // one space on each side
