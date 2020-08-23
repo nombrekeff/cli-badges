@@ -11,7 +11,26 @@ const padd = (s = '', width) => {
     return paddStr + s + paddStr;
 };
 const cap = (s) => s.charAt(0).toUpperCase() + s.substring(1, s.length);
-const getBg = (clc, color) => clc[`bg${cap(color)}`] || clc.bgBlue;
+const getBg = (clc, color) => {
+    const noColor = color == undefined || color === null;
+    const isString = typeof color === 'string';
+    const isNumber = typeof color === 'number';
+
+    if (noColor) return clc.bgBlue;
+    if (isString) return clc[`bg${cap(color)}`];
+    if (isNumber) return clc.bgXterm(color);
+};
+
+const getLabel = (clc, color) => {
+    const noColor = color == undefined || color === null;
+    const isString = typeof color === 'string';
+    const isNumber = typeof color === 'number';
+
+    if (noColor) return clc.blue;
+    if (isString) return clc[color];
+    if (isNumber) return clc.xterm(color);
+};
+
 
 const formatters = {
     bold: (clc, s) => clc.bold(s),
@@ -35,8 +54,8 @@ module.exports = {
         messageWidth = null,
         link = null,
     } = {}) {
-        const lblColorer = getBg(clc, labelBg)[labelColor];
-        const msgColorer = getBg(clc, messageBg)[messageColor];
+        const lblColorer = getLabel(getBg(clc, labelBg), labelColor);
+        const msgColorer = getLabel(getBg(clc, messageBg), messageColor);
 
         const lblFormatted = format(lblColorer, padd(label, labelWidth), labelStyle)
         const msgFormatted = format(msgColorer, padd(message, messageWidth), messageStyle)
