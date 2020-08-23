@@ -31,16 +31,15 @@ const getLabel = (clc, color) => {
     if (isNumber) return clc.xterm(color);
 };
 
-
 const formatters = {
     bold: (clc, s) => clc.bold(s),
     italic: (clc, s) => clc.italic(s),
-}
+};
 
 const format = (clc, s, formatter) => {
     let f = formatters[formatter];
     return f ? f(clc, s) : clc(s);
-}
+};
 
 module.exports = {
     badge(label = '', message = '', {
@@ -57,10 +56,10 @@ module.exports = {
         const lblColorer = getLabel(getBg(clc, labelBg), labelColor);
         const msgColorer = getLabel(getBg(clc, messageBg), messageColor);
 
-        const lblFormatted = format(lblColorer, padd(label, labelWidth), labelStyle)
-        const msgFormatted = format(msgColorer, padd(message, messageWidth), messageStyle)
+        const lblFormatted = format(lblColorer, padd(label, labelWidth), labelStyle);
+        const msgFormatted = format(msgColorer, padd(message, messageWidth), messageStyle);
         const badge = `${label && lblFormatted}${message && msgFormatted} `;
 
         return link && terminalLink.isSupported ? terminalLink(badge, link) : badge;
     },
-}
+};
