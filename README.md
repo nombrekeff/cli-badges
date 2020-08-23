@@ -154,9 +154,9 @@ badge('with', 'link', { link: 'https://link.com' });
 
 ## Support the project
 
-I tend to open source anything I can, adn love to help people that need help with the project.
+I tend to open source anything I can, and love to help people that need help with the project.
 
-However, if you are using this project and happy with it or just want to encourage me to continue creating stuff, there are few ways you can do it :-
+However, if you are using this project and are happy with it or just want to encourage me to continue creating stuff, there are few ways you can do so:
 
 - Starring and sharing the project 🚀
 - Reporting bugs 🐛
