@@ -1,34 +1,40 @@
 const clc = require('cli-color');
 const terminalLink = require('terminal-link');
 
-const padd = (s = '', width) => {
-    if (!width) {
-        width = s.length + 2;
-    }
+const padd = (string, width) => {
+    const sLength = string.length;
 
-    const halfWith = Math.ceil((width - s.length) / 2);
+    if (!width) width = sLength + 2; // one space on each side
+
+    const halfWith = Math.ceil((width - sLength) / 2);
     const paddStr = ' '.repeat(halfWith);
-    return paddStr + s + paddStr;
+
+    return paddStr + string + paddStr;
 };
-const cap = (s) => s.charAt(0).toUpperCase() + s.substring(1, s.length);
+
+const cappitalize = (string) => {
+    return string.charAt(0).toUpperCase()
+        + string.substring(1, string.length);
+};
+
 const getBg = (clc, color) => {
-    const noColor = color == undefined || color === null;
     const isString = typeof color === 'string';
     const isNumber = typeof color === 'number';
 
-    if (noColor) return clc.bgBlue;
-    if (isString) return clc[`bg${cap(color)}`];
+    if (isString) return clc[`bg${cappitalize(color)}`];
     if (isNumber) return clc.bgXterm(color);
+
+    return clc.bgBlue;
 };
 
 const getLabel = (clc, color) => {
-    const noColor = color == undefined || color === null;
     const isString = typeof color === 'string';
     const isNumber = typeof color === 'number';
 
-    if (noColor) return clc.blue;
     if (isString) return clc[color];
     if (isNumber) return clc.xterm(color);
+
+    return clc.blue;
 };
 
 const formatters = {
@@ -58,8 +64,10 @@ module.exports = {
 
         const lblFormatted = format(lblColorer, padd(label, labelWidth), labelStyle);
         const msgFormatted = format(msgColorer, padd(message, messageWidth), messageStyle);
-        const badge = `${label && lblFormatted}${message && msgFormatted} `;
 
-        return link && terminalLink.isSupported ? terminalLink(badge, link) : badge;
+        const badge = `${label && lblFormatted}${message && msgFormatted} `;
+        const makeLink = link && terminalLink.isSupported;
+
+        return makeLink ? terminalLink(badge, link) : badge;
     },
 };

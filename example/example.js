@@ -32,8 +32,8 @@ console.log(
         labelColor: 'white',
         messageStyle: null,
         labelStyle: null,
-        labelWidth = null,
-        messageWidth = null,
+        labelWidth: null,
+        messageWidth: null,
         link: null,
     }),
 );
