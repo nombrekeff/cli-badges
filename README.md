@@ -62,7 +62,7 @@ You can also only show the label:
 ```js
 const { badge } = require('../index');
 
-const onlyLabel = badge('❤️ donate', '', { labelColor: 'magenta' });
+const onlyLabel = badge('❤️ donate', '', { labelColor: 169 });
 
 console.log(onlyLabel);
 ```
@@ -82,10 +82,10 @@ export function badge(
   label?: string,
   message?: string,
   options?: {
-    labelBg?: string;
-    messageBg?: string;
-    labelColor?: string;
-    messageColor?: string;
+    labelBg?: string | number;
+    messageBg?: string | number;
+    labelColor?: string | number;
+    messageColor?: string | number;
     labelStyle?: any;
     messageStyle?: any;
     labelWidth?: any;
@@ -135,6 +135,10 @@ export function badge(
 - `magentaBright`
 - `cyanBright`
 - `whiteBright`
+
+There are more colors available using xterm colors, see [cli-color xterm colors](https://github.com/medikoo/cli-color#xterm-colors-256-colors-table) for the complete list of available colors.
+
+> **Not supported on Windows and some terminals.** However if used in not supported environment, the closest color from basic (16 colors) palette is chosen.
 
 ### Links
 
