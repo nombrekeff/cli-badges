@@ -127,7 +127,6 @@ export function badge(
 - `magenta`
 - `cyan`
 - `white`
-
 - `blackBright`
 - `redBright`
 - `greenBright`
