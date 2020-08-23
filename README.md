@@ -117,7 +117,7 @@ export function badge(
 
 `cli-badges` uses [`cli-color`](https://github.com/medikoo/cli-color#colors) internally for managing colors, you can check the list of available colors there. Take into account that when setting a color you don't need to pass the prefix `bg`, it's handled for you. ie: `blackBright` instead of `bgBlackBright`
 
-#### List of available colors
+#### List of available colors
 
 - `black`
 - `red`
