@@ -48,8 +48,6 @@ The above would output something similar to the terminal:
 You could also create a donate badge with a link ([if supported](#links)):
 
 ```js
-const { badge } = require('cli-badges');
-
 const donateBadge = badge('donate', 'ko-fi', {
   link: 'https://ko-fi.com/logginjs',
 });
@@ -58,6 +56,16 @@ console.log(donateBadge);
 ```
 
 ![](./donate-output-example.png)
+
+You can also only show the label:
+
+```js
+const { badge } = require('../index');
+
+const onlyLabel = badge('❤️ donate', '', { labelColor: 'magenta' });
+
+console.log(onlyLabel);
+```
 
 > ###### Example output is a mock, console output will vary slightly from terminal to terminal.
 
@@ -111,24 +119,23 @@ export function badge(
 
 #### List of available colors
 
-* `black`
-* `red`
-* `green`
-* `yellow`
-* `blue`
-* `magenta`
-* `cyan`
-* `white`
+- `black`
+- `red`
+- `green`
+- `yellow`
+- `blue`
+- `magenta`
+- `cyan`
+- `white`
 
-* `blackBright`
-* `redBright`
-* `greenBright`
-* `yellowBright`
-* `blueBright`
-* `magentaBright`
-* `cyanBright`
-* `whiteBright`
-
+- `blackBright`
+- `redBright`
+- `greenBright`
+- `yellowBright`
+- `blueBright`
+- `magentaBright`
+- `cyanBright`
+- `whiteBright`
 
 ### Links
 
