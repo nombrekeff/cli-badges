@@ -48,7 +48,7 @@ The above would output something similar to the terminal:
 You could also create a donate badge with a link ([if supported](#links)):
 
 ```js
-const donateBadge = badge('donate', 'ko-fi', {
+const donateBadge = badge('❤️ donate', 'ko-fi', {
   link: 'https://ko-fi.com/logginjs',
 });
 
