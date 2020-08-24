@@ -154,6 +154,12 @@ You can output badges with a link attached to it, that can be clicked in some te
 badge('with', 'link', { link: 'https://link.com' });
 ```
 
+## Other languages?
+
+cli-badges is also available in other languages:
+
+* `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
+
 ## Support the project
 
 I tend to open source anything I can, and love to help people that need help with the project.
