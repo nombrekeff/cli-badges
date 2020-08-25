@@ -40,6 +40,10 @@ const getLabel = (clc, color) => {
 const formatters = {
     bold: (clc, s) => clc.bold(s),
     italic: (clc, s) => clc.italic(s),
+    inverse: (clc, s) => clc.inverse(s),
+    blink: (clc, s) => clc.blink(s),
+    strike: (clc, s) => clc.strike(s),
+    underline: (clc, s) => clc.underline(s),
 };
 
 const format = (clc, s, formatter) => {

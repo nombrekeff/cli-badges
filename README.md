@@ -146,6 +146,12 @@ There are more colors available using xterm colors, see [cli-color xterm colors]
 #### Available Styles
 * bold
 * italic
+* inverse
+* strike
+* underline
+
+> Styles will display correctly if font used in your console supports them.
+
 
 ### Links
 
