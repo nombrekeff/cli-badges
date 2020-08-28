@@ -73,7 +73,7 @@ const makeBadge = (label = '', message = '', {
     const makeLink = link && terminalLink.isSupported;
 
     return (makeLink || forceLink) ? terminalLink(badge, link) : badge;
-}
+};
 
 module.exports = {
     badge: makeBadge,
