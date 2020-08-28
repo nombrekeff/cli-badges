@@ -1,6 +1,6 @@
 {
   "name": "cli-badges",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Quirky little node-js library for generating badges for your cli apps.",
   "main": "index.js",
   "directories": {
