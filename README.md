@@ -106,10 +106,10 @@ export function badge(
 | `labelColor`   | Text [color](#colors) for the label                                                     | string or number | white            |
 | `labelWidth`   | Width of the label                                                                      | number           | label length + 2 |
 | `messageWidth` | Width of the message                                                                    | number           | label length + 2 |
-| `labelStyle`   | Style for the label text                                                                | string           | `''`             |
-| `messageStyle` | Style for the label text                                                                | string           | `''`             |
-| `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_) | URL              | `''`             |
-| `forceLink`    | Force adding link even if not supported                                                 | boolean          | `''`             |
+| `labelStyle`   | Style for the label text                                                                | string           | `null`           |
+| `messageStyle` | Style for the label text                                                                | string           | `null`           |
+| `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_) | URL              | `null`           |
+| `forceLink`    | Force adding link even if not supported                                                 | boolean          | `false`          |
 
 ### Colors
 
