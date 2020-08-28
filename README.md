@@ -62,8 +62,6 @@ console.log(donateBadge);
 You can also only show the label:
 
 ```js
-const { badge } = require('../index');
-
 const onlyLabel = badge('❤️ donate', '', { labelColor: 169 });
 
 console.log(onlyLabel);

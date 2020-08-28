@@ -62,6 +62,7 @@ module.exports = {
         labelWidth = null,
         messageWidth = null,
         link = null,
+        forceLink = false,
     } = {}) {
         const lblColorer = getLabel(getBg(clc, labelBg), labelColor);
         const msgColorer = getLabel(getBg(clc, messageBg), messageColor);
@@ -72,6 +73,6 @@ module.exports = {
         const badge = `${label && lblFormatted}${message && msgFormatted} `;
         const makeLink = link && terminalLink.isSupported;
 
-        return makeLink ? terminalLink(badge, link) : badge;
+        return (makeLink || forceLink) ? terminalLink(badge, link) : badge;
     },
 };
