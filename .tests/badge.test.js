@@ -56,8 +56,33 @@ test('Should work with italic', () => {
     expect(createEmptyBadge).not.toThrow();
 })
 
+test('Should work with inverse', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelStyle: 'inverse', messageStyle: 'inverse' });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Should work with blink', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelStyle: 'blink', messageStyle: 'blink' });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Should work with strike', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelStyle: 'strike', messageStyle: 'strike' });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Should work with underline', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelStyle: 'underline', messageStyle: 'underline' });
+    expect(createEmptyBadge).not.toThrow();
+})
+
 test('Should work with link', () => {
     const createEmptyBadge = () => badge('test', 'label', { link: 'test' });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Should work with forceLink', () => {
+    const createEmptyBadge = () => badge('test', 'label', { link: 'https://test', forceLink: true });
     expect(createEmptyBadge).not.toThrow();
 })
 
