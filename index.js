@@ -17,7 +17,7 @@ const cappitalize = (string) => {
         + string.substring(1, string.length);
 };
 
-const getBg = (clc, color) => {
+const getBgColor = (clc, color) => {
     const isString = typeof color === 'string';
     const isNumber = typeof color === 'number';
 
@@ -27,7 +27,7 @@ const getBg = (clc, color) => {
     return clc.bgBlue;
 };
 
-const getLabel = (clc, color) => {
+const getTextColor = (clc, color) => {
     const isString = typeof color === 'string';
     const isNumber = typeof color === 'number';
 
@@ -51,28 +51,30 @@ const format = (clc, s, formatter) => {
     return f ? f(clc, s) : clc(s);
 };
 
+const makeBadge = (label = '', message = '', {
+    messageBg = 'blue',
+    labelBg = 'blackBright',
+    messageColor = 'white',
+    labelColor = 'white',
+    messageStyle = null,
+    labelStyle = null,
+    labelWidth = null,
+    messageWidth = null,
+    link = null,
+    forceLink = false,
+} = {}) => {
+    const lblColorer = getTextColor(getBgColor(clc, labelBg), labelColor);
+    const msgColorer = getTextColor(getBgColor(clc, messageBg), messageColor);
+
+    const lblFormatted = format(lblColorer, padd(label, labelWidth), labelStyle);
+    const msgFormatted = format(msgColorer, padd(message, messageWidth), messageStyle);
+
+    const badge = `${label && lblFormatted}${message && msgFormatted} `;
+    const makeLink = link && terminalLink.isSupported;
+
+    return (makeLink || forceLink) ? terminalLink(badge, link) : badge;
+}
+
 module.exports = {
-    badge(label = '', message = '', {
-        messageBg = 'blue',
-        labelBg = 'blackBright',
-        messageColor = 'white',
-        labelColor = 'white',
-        messageStyle = null,
-        labelStyle = null,
-        labelWidth = null,
-        messageWidth = null,
-        link = null,
-        forceLink = false,
-    } = {}) {
-        const lblColorer = getLabel(getBg(clc, labelBg), labelColor);
-        const msgColorer = getLabel(getBg(clc, messageBg), messageColor);
-
-        const lblFormatted = format(lblColorer, padd(label, labelWidth), labelStyle);
-        const msgFormatted = format(msgColorer, padd(message, messageWidth), messageStyle);
-
-        const badge = `${label && lblFormatted}${message && msgFormatted} `;
-        const makeLink = link && terminalLink.isSupported;
-
-        return (makeLink || forceLink) ? terminalLink(badge, link) : badge;
-    },
+    badge: makeBadge,
 };

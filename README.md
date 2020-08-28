@@ -28,7 +28,7 @@ This is a simple example, using badges to display test results:
 ```js
 const { badge } = require('cli-badges');
 
-const failedBadge = badge('failed', '2', { 
+const failedBadge = badge('failed', '2', {
   messageBg: 'red',
 });
 const skippedBadge = badge('skipped', '2', {
@@ -86,29 +86,30 @@ export function badge(
     messageBg?: string | number;
     labelColor?: string | number;
     messageColor?: string | number;
-    labelStyle?: any;
-    messageStyle?: any;
-    labelWidth?: any;
-    messageWidth?: any;
-    link?: any;
+    labelStyle?: string;
+    messageStyle?: string;
+    labelWidth?: number;
+    messageWidth?: number;
+    link?: string;
+    forceLink?: boolean;
   }
 ): string;
 ```
 
 ### Available Options
 
-| Option         | Description                                                                             | Type   | Default          |
-| :------------- | :-------------------------------------------------------------------------------------- | :----- | :--------------- |
-| `messageBg`    | Background [color](#colors) for the label                                               | string | blue             |
-| `labelBg`      | Background [color](#colors) for the message                                             | string | blackBright      |
-| `messageColor` | Text [color](#colors) for the message                                                   | string | white            |
-| `labelColor`   | Text [color](#colors) for the label                                                     | string | white            |
-| `labelWidth`   | Width of the label                                                                      | number | label length + 2 |
-| `messageWidth` | Width of the message                                                                    | number | label length + 2 |
-| `labelStyle`   | Style for the label text                                                                | string | `''`             |
-| `messageStyle` | Style for the label text                                                                | string | `''`             |
-| `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_) | URL    | `''`             |
-
+| Option         | Description                                                                             | Type             | Default          |
+| :------------- | :-------------------------------------------------------------------------------------- | :--------------- | :--------------- |
+| `messageBg`    | Background [color](#colors) for the label                                               | string or number | blue             |
+| `labelBg`      | Background [color](#colors) for the message                                             | string or number | blackBright      |
+| `messageColor` | Text [color](#colors) for the message                                                   | string or number | white            |
+| `labelColor`   | Text [color](#colors) for the label                                                     | string or number | white            |
+| `labelWidth`   | Width of the label                                                                      | number           | label length + 2 |
+| `messageWidth` | Width of the message                                                                    | number           | label length + 2 |
+| `labelStyle`   | Style for the label text                                                                | string           | `''`             |
+| `messageStyle` | Style for the label text                                                                | string           | `''`             |
+| `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_) | URL              | `''`             |
+| `forceLink`    | Force adding link even if not supported                                                 | boolean          | `''`             |
 
 ### Colors
 
@@ -134,22 +135,24 @@ export function badge(
 - `whiteBright`
 
 ##### Xterm colors
+
 There are more colors available using xterm colors, see [cli-color xterm colors](https://github.com/medikoo/cli-color#xterm-colors-256-colors-table) for the complete list of available colors.
 
 > **Not supported on Windows and some terminals.** However if used in not supported environment, the closest color from basic (16 colors) palette is chosen.
 
 ### Styles
+
 **cli-badges** uses [`cli-color`](https://github.com/medikoo/cli-color#styles) internally for managing styles, you can check the list of available styles there.
 
 #### Available Styles
-* bold
-* italic
-* inverse
-* strike
-* underline
+
+- bold
+- italic
+- inverse
+- strike
+- underline
 
 > Styles will display correctly if font used in your console supports them.
-
 
 ### Links
 
@@ -167,7 +170,7 @@ badge('with', 'link', { link: 'https://link.com' });
 
 cli-badges is also available in other languages:
 
-* `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
+- `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
 
 ## Support the project
 
