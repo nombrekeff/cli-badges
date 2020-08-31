@@ -34,7 +34,7 @@ console.log(
 );
 ```
 
-## Contributing 💕
+## Contributing 💕
 
 You can add your themes for review, just follow this simple steps:
 
