@@ -186,11 +186,13 @@ badge.green.inversed('theme', 'green');
 
 You can check the list of themes [here]().
 
-## Other languages?
+## Other Libraries?
+
 
 cli-badges is also available in other languages:
 
 - `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
+- `Deno` [@Delta456/cli_badges](https://github.com/Delta456/cli_badges)
 
 ## Support the project
 
