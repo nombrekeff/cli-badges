@@ -1,5 +1,15 @@
 const clc = require('cli-color');
 const terminalLink = require('terminal-link');
+const themes = require('./themes.js');
+
+const formatters = {
+    bold: (clc, s) => clc.bold(s),
+    italic: (clc, s) => clc.italic(s),
+    inverse: (clc, s) => clc.inverse(s),
+    blink: (clc, s) => clc.blink(s),
+    strike: (clc, s) => clc.strike(s),
+    underline: (clc, s) => clc.underline(s),
+};
 
 const paddToFitWidth = (string, width) => {
     const sLength = string.length;
@@ -43,15 +53,6 @@ const getTextColor = (clc, color) => {
     return clc.blue;
 };
 
-const formatters = {
-    bold: (clc, s) => clc.bold(s),
-    italic: (clc, s) => clc.italic(s),
-    inverse: (clc, s) => clc.inverse(s),
-    blink: (clc, s) => clc.blink(s),
-    strike: (clc, s) => clc.strike(s),
-    underline: (clc, s) => clc.underline(s),
-};
-
 const format = (clc, s, formatter) => {
     let f = formatters[formatter];
     return f ? f(clc, s) : clc(s);
@@ -83,6 +84,33 @@ const makeBadge = (label = '', message = '', {
 
     return (makeLink || forceLink) ? terminalLink(badge, link) : badge;
 };
+
+
+const createThemeFn = (theme) => {
+    const themeFn = (label, message, options) => {
+        return makeBadge(label, message, {
+            ...themes[theme],
+            ...options,
+        });
+    };
+
+    const themeFnInversed = (label, message, options) => {
+        return makeBadge(label, message, {
+            ...themes.inversed[theme],
+            ...options,
+        });
+    };
+
+    themeFn.inversed = themeFnInversed;
+    return themeFn;
+}
+
+makeBadge.green = createThemeFn('green');
+makeBadge.red = createThemeFn('red');
+makeBadge.blue = createThemeFn('blue');
+makeBadge.cyan = createThemeFn('cyan');
+makeBadge.yellow = createThemeFn('yellow');
+makeBadge.magenta = createThemeFn('magenta');
 
 module.exports = {
     badge: makeBadge,

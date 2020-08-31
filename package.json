@@ -8,6 +8,7 @@
   },
   "files": [
     "./index.js",
+    "./themes.js",
     "./README.md",
     "./output-example.png",
     "./donate-output-example.png"
