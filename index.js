@@ -66,26 +66,22 @@ const getOptionsForTheme = (theme, invert) => {
 
     if (invert) {
         const pLblColor = themeOpts.labelColor;
-        const pMsgColor = themeOpts.messageColor;
-
-        themeOpts.labelColor = pMsgColor;
+        themeOpts.labelColor = themeOpts.messageColor;
         themeOpts.messageColor = pLblColor;
 
         const pLblBg = themeOpts.labelBg;
-        const pMsgBg = themeOpts.messageBg;
-
-        themeOpts.labelBg = pMsgBg;
+        themeOpts.labelBg = themeOpts.messageBg;
         themeOpts.messageBg = pLblBg;
     }
 
-    return themeOpts;;
-}
+    return themeOpts;
+};
 
 const DEFAULT_OPTIONS = {
     messageStyle: null,
+    messageWidth: null,
     labelStyle: null,
     labelWidth: null,
-    messageWidth: null,
     link: null,
     forceLink: false,
     theme: 'blue',
@@ -96,16 +92,9 @@ const makeBadge = (label = '', message = '', options = DEFAULT_OPTIONS) => {
     const themeOpts = getOptionsForTheme(options.theme, options.invertTheme);
 
     const {
-        messageBg,
-        labelBg,
-        messageColor,
-        labelColor,
-        messageStyle,
-        labelStyle,
-        labelWidth,
-        messageWidth,
-        link,
-        forceLink,
+        messageBg, messageColor, messageStyle, messageWidth,
+        labelBg, labelColor, labelStyle, labelWidth,
+        link, forceLink,
     } = { ...themeOpts, ...options };
 
     const lblColorer = getTextColor(getBgColor(clc, labelBg), labelColor);
@@ -131,7 +120,7 @@ const createThemeFn = (theme) => {
         themeFn(label, message, { ...options, invertTheme: true });
 
     return themeFn;
-}
+};
 
 makeBadge.green = createThemeFn('green');
 makeBadge.red = createThemeFn('red');
@@ -141,6 +130,4 @@ makeBadge.yellow = createThemeFn('yellow');
 makeBadge.magenta = createThemeFn('magenta');
 makeBadge.theme = (theme) => createThemeFn(theme);
 
-module.exports = {
-    badge: makeBadge,
-};
+module.exports = { badge: makeBadge };
