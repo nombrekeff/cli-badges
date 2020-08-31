@@ -35,10 +35,7 @@ const skippedBadge = badge('skipped', '2', {
   messageBg: 'yellow',
   messageColor: 'white',
 });
-const successBadge = badge('success', '2', {
-  messageBg: 'green',
-  messageColor: 'white',
-});
+const successBadge = badge.green('success', '2');
 
 console.log(failedBadge, successBadge, skippedBadge);
 ```
@@ -50,7 +47,7 @@ The above would output something similar to the terminal:
 You could also create a donate badge with a link ([if supported](#links)):
 
 ```js
-const donateBadge = badge('❤️ donate', 'ko-fi', {
+const donateBadge = badge.blue('❤️ donate', 'ko-fi', {
   link: 'https://ko-fi.com/logginjs',
 });
 
@@ -110,7 +107,7 @@ export function badge(
 | `messageStyle` | Style for the label text                                                                     | string           | `null`           |
 | `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_)      | URL              | `null`           |
 | `forceLink`    | Force adding link even if not supported                                                      | boolean          | `false`          |
-| `theme`        | Theme to be used                                                                             | string           | `blue`           |
+| `theme`        | Theme to be used, see [all themes](./docs/themes.md)                                         | string           | `blue`           |
 | `invertTheme`  | invert all themes, this means properties from label will be aplied to message and vice versa | boolean          | `false`          |
 
 ## Colors
@@ -173,24 +170,25 @@ badge('with', 'link', { link: 'https://link.com' });
 There are a set of prebuilt themes available, you can use them as follows:
 
 ```js
-badge('theme', 'green', { theme: 'green' }); // green message background
-badge('theme', 'green', { theme: 'green', invertTheme }); // green label background
+badge('label', 'green', { theme: 'green' });
+badge('label', 'magenta', { theme: 'magenta', invertTheme: true });
 ```
 
 Or like this:
 
 ```js
-badge.green('theme', 'green');
+badge.green('label', 'green');
 badge.green.inversed('theme', 'green');
 ```
 
-You can check the list of themes [here]().
+You can check the complete list of themes [here](./docs/themes.md) .
 
-## Other languages?
+## Other Libraries?
 
 cli-badges is also available in other languages:
 
 - `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
+- `Deno` [@Delta456/cli_badges](https://github.com/Delta456/cli_badges)
 
 ## Support the project
 
