@@ -1,7 +1,7 @@
 const clc = require('cli-color');
 const terminalLink = require('terminal-link');
 
-const padd = (string, width) => {
+const paddToFitWidth = (string, width) => {
     const sLength = string.length;
 
     if (!width) width = sLength + 2; // one space on each side
@@ -17,22 +17,28 @@ const cappitalize = (string) => {
         + string.substring(1, string.length);
 };
 
-const getBgColor = (clc, color) => {
-    const isString = typeof color === 'string';
-    const isNumber = typeof color === 'number';
+const validXtermColor = (val) => val < 255 && val > 0;
+const isString = (val) => typeof val === 'string';
+const isNumber = (val) => typeof val === 'number';
+const colorExists = (val) => val in clc;
+const bgColorExists = (val) => `bg${cappitalize(val)}` in clc;
 
-    if (isString) return clc[`bg${cappitalize(color)}`];
-    if (isNumber) return clc.bgXterm(color);
+const getBgColor = (clc, color) => {
+    const isValidNumber = isNumber(color) && validXtermColor(color);
+    const isValidString = isString(color) && bgColorExists(color);
+
+    if (isValidNumber) return clc.bgXterm(color);
+    if (isValidString) return clc[`bg${cappitalize(color)}`];
 
     return clc.bgBlue;
 };
 
 const getTextColor = (clc, color) => {
-    const isString = typeof color === 'string';
-    const isNumber = typeof color === 'number';
+    const isValidNumber = isNumber(color) && validXtermColor(color);
+    const isValidString = isString(color) && colorExists(color);
 
-    if (isString) return clc[color];
-    if (isNumber) return clc.xterm(color);
+    if (isValidNumber) return clc.xterm(color);
+    if (isValidString) return clc[color];
 
     return clc.blue;
 };
@@ -66,8 +72,11 @@ const makeBadge = (label = '', message = '', {
     const lblColorer = getTextColor(getBgColor(clc, labelBg), labelColor);
     const msgColorer = getTextColor(getBgColor(clc, messageBg), messageColor);
 
-    const lblFormatted = format(lblColorer, padd(label, labelWidth), labelStyle);
-    const msgFormatted = format(msgColorer, padd(message, messageWidth), messageStyle);
+    const paddedLbl = paddToFitWidth(label, labelWidth);
+    const paddedMsg = paddToFitWidth(message, messageWidth);
+
+    const lblFormatted = format(lblColorer, paddedLbl, labelStyle);
+    const msgFormatted = format(msgColorer, paddedMsg, messageStyle);
 
     const badge = `${label && lblFormatted}${message && msgFormatted} `;
     const makeLink = link && terminalLink.isSupported;

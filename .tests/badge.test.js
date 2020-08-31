@@ -40,6 +40,11 @@ test('Should work with null label and message bg', () => {
     expect(createEmptyBadge).not.toThrow();
 })
 
+test('Should work with incorrect xterm color', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelBg: -1, messageBg: 260 });
+    expect(createEmptyBadge).not.toThrow();
+})
+
 test('Should work with null label and message color', () => {
     const createEmptyBadge = () => badge('test', 'label', { labelColor: null, messageColor: null });
     expect(createEmptyBadge).not.toThrow();
