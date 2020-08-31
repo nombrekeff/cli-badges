@@ -7,6 +7,7 @@ console.log(
     badge.yellow('theme', 'yellow'),
     badge.magenta('theme', 'magenta'),
     badge.cyan('theme', 'cyan'),
+    badge.theme('cyan')('theme', 'cyan'),
 );
 
 console.log(
@@ -16,4 +17,5 @@ console.log(
     badge.yellow.inversed('theme', 'yellow'),
     badge.magenta.inversed('theme', 'magenta'),
     badge.cyan.inversed('theme', 'cyan'),
+    badge.theme('cyan').inversed('theme', 'cyan'),
 );

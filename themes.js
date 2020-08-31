@@ -1,56 +1,38 @@
 module.exports = {
     blue: {
         messageBg: 'blue',
+        labelBg: 'blackBright',
+        labelColor: 'white',
+        messageColor: 'white',
     },
     red: {
-        messageBg: 'red'
+        messageBg: 'red',
+        labelBg: 'blackBright',
+        labelColor: 'white',
+        messageColor: 'white',
     },
     green: {
         messageBg: 'green',
-        messageColor: 'black',
+        labelBg: 'blackBright',
+        labelColor: 'white',
+        messageColor: 'white',
     },
     yellow: {
         messageBg: 'yellow',
+        labelBg: 'blackBright',
+        labelColor: 'white',
         messageColor: 'black',
     },
     cyan: {
         messageBg: 'cyan',
+        labelBg: 'blackBright',
+        labelColor: 'white',
         messageColor: 'black',
     },
     magenta: {
         messageBg: 'magenta',
+        labelBg: 'blackBright',
+        labelColor: 'white',
         messageColor: 'black',
     },
-
-    // Inverse the backgrounds
-    inversed: {
-        blue: {
-            labelBg: 'blue',
-            messageBg: 'blackBright',
-        },
-        red: {
-            labelBg: 'red',
-            messageBg: 'blackBright',
-        },
-        green: {
-            labelBg: 'green',
-            labelColor: 'black',
-            messageBg: 'blackBright',
-        },
-        yellow: {
-            labelBg: 'yellow',
-            labelColor: 'black',
-            messageBg: 'blackBright',
-        },
-        cyan: {
-            labelBg: 'cyan',
-            labelColor: 'black',
-            messageBg: 'blackBright',
-        },
-        magenta: {
-            labelBg: 'magenta',
-            labelColor: 'black',
-            messageBg: 'blackBright',
-        },
-    }
 };

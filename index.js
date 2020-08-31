@@ -10,6 +10,12 @@ const formatters = {
     strike: (clc, s) => clc.strike(s),
     underline: (clc, s) => clc.underline(s),
 };
+const validXtermColor = (val) => val < 255 && val > 0;
+const isString = (val) => typeof val === 'string';
+const isNumber = (val) => typeof val === 'number';
+const colorExists = (val) => val in clc;
+const bgColorExists = (val) => `bg${cappitalize(val)}` in clc;
+const themeExists = (val) => val in themes;
 
 const paddToFitWidth = (string, width) => {
     const sLength = string.length;
@@ -26,12 +32,6 @@ const cappitalize = (string) => {
     return string.charAt(0).toUpperCase()
         + string.substring(1, string.length);
 };
-
-const validXtermColor = (val) => val < 255 && val > 0;
-const isString = (val) => typeof val === 'string';
-const isNumber = (val) => typeof val === 'number';
-const colorExists = (val) => val in clc;
-const bgColorExists = (val) => `bg${cappitalize(val)}` in clc;
 
 const getBgColor = (clc, color) => {
     const isValidNumber = isNumber(color) && validXtermColor(color);
@@ -50,7 +50,7 @@ const getTextColor = (clc, color) => {
     if (isValidNumber) return clc.xterm(color);
     if (isValidString) return clc[color];
 
-    return clc.blue;
+    return clc.white;
 };
 
 const format = (clc, s, formatter) => {
@@ -58,18 +58,56 @@ const format = (clc, s, formatter) => {
     return f ? f(clc, s) : clc(s);
 };
 
-const makeBadge = (label = '', message = '', {
-    messageBg = 'blue',
-    labelBg = 'blackBright',
-    messageColor = 'white',
-    labelColor = 'white',
-    messageStyle = null,
-    labelStyle = null,
-    labelWidth = null,
-    messageWidth = null,
-    link = null,
-    forceLink = false,
-} = {}) => {
+const getOptionsForTheme = (theme, invert) => {
+    if (!themeExists(theme)) {
+        theme = 'blue';
+    }
+    const themeOpts = { ...themes[theme] };
+
+    if (invert) {
+        const pLblColor = themeOpts.labelColor;
+        const pMsgColor = themeOpts.messageColor;
+
+        themeOpts.labelColor = pMsgColor;
+        themeOpts.messageColor = pLblColor;
+
+        const pLblBg = themeOpts.labelBg;
+        const pMsgBg = themeOpts.messageBg;
+
+        themeOpts.labelBg = pMsgBg;
+        themeOpts.messageBg = pLblBg;
+    }
+
+    return themeOpts;;
+}
+
+const DEFAULT_OPTIONS = {
+    messageStyle: null,
+    labelStyle: null,
+    labelWidth: null,
+    messageWidth: null,
+    link: null,
+    forceLink: false,
+    theme: 'blue',
+    invertTheme: false,
+    ...themes['blue'],
+};
+const makeBadge = (label = '', message = '', options = DEFAULT_OPTIONS) => {
+    const themeOpts = getOptionsForTheme(options.theme, options.invertTheme);
+
+    const {
+        messageBg,
+        labelBg,
+        messageColor,
+        labelColor,
+        messageStyle,
+        labelStyle,
+        labelWidth,
+        messageWidth,
+        link,
+        forceLink,
+    } = { ...themeOpts, ...options };
+
     const lblColorer = getTextColor(getBgColor(clc, labelBg), labelColor);
     const msgColorer = getTextColor(getBgColor(clc, messageBg), messageColor);
 
@@ -85,23 +123,13 @@ const makeBadge = (label = '', message = '', {
     return (makeLink || forceLink) ? terminalLink(badge, link) : badge;
 };
 
-
 const createThemeFn = (theme) => {
-    const themeFn = (label, message, options) => {
-        return makeBadge(label, message, {
-            ...themes[theme],
-            ...options,
-        });
-    };
+    const themeFn = (label, message, options) =>
+        makeBadge(label, message, { ...options, theme });
 
-    const themeFnInversed = (label, message, options) => {
-        return makeBadge(label, message, {
-            ...themes.inversed[theme],
-            ...options,
-        });
-    };
+    themeFn.inversed = (label, message, options) =>
+        themeFn(label, message, { ...options, invertTheme: true });
 
-    themeFn.inversed = themeFnInversed;
     return themeFn;
 }
 
@@ -111,6 +139,7 @@ makeBadge.blue = createThemeFn('blue');
 makeBadge.cyan = createThemeFn('cyan');
 makeBadge.yellow = createThemeFn('yellow');
 makeBadge.magenta = createThemeFn('magenta');
+makeBadge.theme = (theme) => createThemeFn(theme);
 
 module.exports = {
     badge: makeBadge,

@@ -3,9 +3,6 @@
   "version": "1.4.0",
   "description": "Quirky little node-js library for generating badges for your cli apps.",
   "main": "index.js",
-  "directories": {
-    "example": "example"
-  },
   "files": [
     "./index.js",
     "./themes.js",

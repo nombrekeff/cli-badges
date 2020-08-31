@@ -95,3 +95,23 @@ test('Should return correctly formatted badge', () => {
     const testBadge = badge('test', 'label', { labelBg: 32 });
     expect(testBadge).toEqual('[48;5;32m[37m test [39m[49m[44m[37m label [39m[49m ');
 })
+
+test('Should work with theme', () => {
+    const createEmptyBadge = () => badge('test', 'label', { theme: 'green' });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Should work with theme', () => {
+    const createEmptyBadge = () => badge('test', 'label', { theme: 'green', invertTheme: true });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('badge.theme should work', () => {
+    const createEmptyBadge = () => badge.theme('red')('test', 'label');
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('badge.theme should work', () => {
+    const createEmptyBadge = () => badge.theme('red').inversed('test', 'label');
+    expect(createEmptyBadge).not.toThrow();
+})

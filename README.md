@@ -96,26 +96,28 @@ export function badge(
 ): string;
 ```
 
-### Available Options
+## Available Options
 
-| Option         | Description                                                                             | Type             | Default          |
-| :------------- | :-------------------------------------------------------------------------------------- | :--------------- | :--------------- |
-| `messageBg`    | Background [color](#colors) for the label                                               | string or number | blue             |
-| `labelBg`      | Background [color](#colors) for the message                                             | string or number | blackBright      |
-| `messageColor` | Text [color](#colors) for the message                                                   | string or number | white            |
-| `labelColor`   | Text [color](#colors) for the label                                                     | string or number | white            |
-| `labelWidth`   | Width of the label                                                                      | number           | label length + 2 |
-| `messageWidth` | Width of the message                                                                    | number           | label length + 2 |
-| `labelStyle`   | Style for the label text                                                                | string           | `null`           |
-| `messageStyle` | Style for the label text                                                                | string           | `null`           |
-| `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_) | URL              | `null`           |
-| `forceLink`    | Force adding link even if not supported                                                 | boolean          | `false`          |
+| Option         | Description                                                                                  | Type             | Default          |
+| :------------- | :------------------------------------------------------------------------------------------- | :--------------- | :--------------- |
+| `messageBg`    | Background [color](#colors) for the label                                                    | string or number | blue             |
+| `labelBg`      | Background [color](#colors) for the message                                                  | string or number | blackBright      |
+| `messageColor` | Text [color](#colors) for the message                                                        | string or number | white            |
+| `labelColor`   | Text [color](#colors) for the label                                                          | string or number | white            |
+| `labelWidth`   | Width of the label                                                                           | number           | label length + 2 |
+| `messageWidth` | Width of the message                                                                         | number           | label length + 2 |
+| `labelStyle`   | Style for the label text                                                                     | string           | `null`           |
+| `messageStyle` | Style for the label text                                                                     | string           | `null`           |
+| `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_)      | URL              | `null`           |
+| `forceLink`    | Force adding link even if not supported                                                      | boolean          | `false`          |
+| `theme`        | Theme to be used                                                                             | string           | `blue`           |
+| `invertTheme`  | invert all themes, this means properties from label will be aplied to message and vice versa | boolean          | `false`          |
 
-### Colors
+## Colors
 
 `cli-badges` uses [`cli-color`](https://github.com/medikoo/cli-color#colors) internally for managing colors, you can check the list of available colors there. Take into account that when setting a color you don't need to pass the prefix `bg`, it's handled for you. ie: `blackBright` instead of `bgBlackBright`
 
-#### Available colors
+### Available colors
 
 - `black`
 - `red`
@@ -134,17 +136,17 @@ export function badge(
 - `cyanBright`
 - `whiteBright`
 
-##### Xterm colors
+#### Xterm colors
 
 There are more colors available using xterm colors, see [cli-color xterm colors](https://github.com/medikoo/cli-color#xterm-colors-256-colors-table) for the complete list of available colors.
 
 > **Not supported on Windows and some terminals.** However if used in not supported environment, the closest color from basic (16 colors) palette is chosen.
 
-### Styles
+## Styles
 
 **cli-badges** uses [`cli-color`](https://github.com/medikoo/cli-color#styles) internally for managing styles, you can check the list of available styles there.
 
-#### Available Styles
+### Available Styles
 
 - bold
 - italic
@@ -154,7 +156,7 @@ There are more colors available using xterm colors, see [cli-color xterm colors]
 
 > Styles will display correctly if font used in your console supports them.
 
-### Links
+## Links
 
 You can output badges with a link attached to it, that can be clicked in some terminals.
 
@@ -165,6 +167,24 @@ You can output badges with a link attached to it, that can be clicked in some te
 ```js
 badge('with', 'link', { link: 'https://link.com' });
 ```
+
+## Themes
+
+There are a set of prebuilt themes available, you can use them as follows:
+
+```js
+badge('theme', 'green', { theme: 'green' }); // green message background
+badge('theme', 'green', { theme: 'green', invertTheme }); // green label background
+```
+
+Or like this:
+
+```js
+badge.green('theme', 'green');
+badge.green.inversed('theme', 'green');
+```
+
+You can check the list of themes [here]().
 
 ## Other languages?
 
