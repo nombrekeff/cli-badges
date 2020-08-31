@@ -166,11 +166,12 @@ You can output badges with a link attached to it, that can be clicked in some te
 badge('with', 'link', { link: 'https://link.com' });
 ```
 
-## Other languages?
+## Other Libraries?
 
 cli-badges is also available in other languages:
 
 - `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
+- `Deno` [@Delta456/cli_badges](https://github.com/Delta456/cli_badges)
 
 ## Support the project
 
