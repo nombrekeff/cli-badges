@@ -42,7 +42,7 @@ console.log(failedBadge, successBadge, skippedBadge);
 
 The above would output something similar to the terminal:
 
-![](./output-example.png)
+![](./images/output-example.png)
 
 You could also create a donate badge with a link ([if supported](#links)):
 
@@ -54,7 +54,7 @@ const donateBadge = badge.blue('❤️ donate', 'ko-fi', {
 console.log(donateBadge);
 ```
 
-![](./donate-output-example.png)
+![](./images/donate-output-example.png)
 
 You can also only show the label:
 
@@ -169,21 +169,51 @@ badge('with', 'link', { link: 'https://link.com' });
 
 ## Themes
 
-There are a set of prebuilt themes available, you can use them as follows:
+![](./images/themes-preview.png)
+
+Themes are a way to store badge configuration for repeated use. All the options (_except for the theme option, obviously_) that are needed by the badge can be stored by making a theme.
+
+The library comes with a set of inbuilt themes:
+
+#### Inbuilt Themes
+
+- **red** : Red Message Background
+- **green** : Green Message Background
+- **blue** : Blue Message Background
+- **yellow** : Black Colored Message on Yellow Background
+- **cyan** : Black Colored Message on Cyan Background
+- **magenta** : Black Colored Message on Magenta Background
+- **success** : (_'Success'_) Message on Green Background
+- **failed** : (_'Failed'_) Message on Red Background
+
+#### Using Themes
+
+You can use the themes in various ways, passing an option `theme` to badge:
 
 ```js
 badge('label', 'green', { theme: 'green' });
-badge('label', 'magenta', { theme: 'magenta', invertTheme: true });
+badge('label', 'magenta', { theme: 'magenta', swapTheme: true });
 ```
 
-Or like this:
+Or there are helper methods for ease of use:
 
 ```js
 badge.green('label', 'green');
-badge.green.swapped('theme', 'green');
+badge.failed('theme', 'red');
 ```
 
-You can check the complete list of themes [here](./docs/themes.md) .
+#### Swap Properties
+
+You can also **swap** all themes, this means properties from label will be aplied to message and vice versa.
+
+```js
+badge.failed('theme', 'red');
+badge.failed.swap('theme', 'red');
+```
+
+![](./images/swap-example.png)
+
+You can check the complete list of themes [here](./docs/themes.md).
 
 ## Other Libraries?
 

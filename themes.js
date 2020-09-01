@@ -1,4 +1,4 @@
-module.exports = {
+var themes = {
     blue: {
         messageBg: 'blue',
         labelBg: 'blackBright',
@@ -35,4 +35,18 @@ module.exports = {
         labelColor: 'white',
         messageColor: 'black',
     },
+    failed: {
+        messageBg: 'red',
+        labelBg: 'blackBright',
+        labelColor: 'white',
+        messageColor: 'white',
+    },
+    success: {
+        messageBg: 'green',
+        labelBg: 'blackBright',
+        labelColor: 'white',
+        messageColor: 'white',
+    },
 };
+
+module.exports = themes;
