@@ -58,13 +58,13 @@ const format = (clc, s, formatter) => {
     return f ? f(clc, s) : clc(s);
 };
 
-const getOptionsForTheme = (theme, invert) => {
+const getOptionsForTheme = (theme, swapTheme) => {
     if (!themeExists(theme)) {
         theme = 'blue';
     }
     const themeOpts = { ...themes[theme] };
 
-    if (invert) {
+    if (swapTheme) {
         const pLblColor = themeOpts.labelColor;
         themeOpts.labelColor = themeOpts.messageColor;
         themeOpts.messageColor = pLblColor;
@@ -85,11 +85,12 @@ const DEFAULT_OPTIONS = {
     link: null,
     forceLink: false,
     theme: 'blue',
-    invertTheme: false,
+    swapTheme: false,
     ...themes['blue'],
 };
+
 const makeBadge = (label = '', message = '', options = DEFAULT_OPTIONS) => {
-    const themeOpts = getOptionsForTheme(options.theme, options.invertTheme);
+    const themeOpts = getOptionsForTheme(options.theme, options.swapTheme);
 
     const {
         messageBg, messageColor, messageStyle, messageWidth,
@@ -113,11 +114,9 @@ const makeBadge = (label = '', message = '', options = DEFAULT_OPTIONS) => {
 };
 
 const createThemeFn = (theme) => {
-    const themeFn = (label, message, options) =>
-        makeBadge(label, message, { ...options, theme });
+    const themeFn = (label, message, options = {}) => makeBadge(label, message, { ...options, theme });
 
-    themeFn.inversed = (label, message, options) =>
-        themeFn(label, message, { ...options, invertTheme: true });
+    themeFn.swapped = (label, message, options) => themeFn(label, message, { ...options, swapTheme: true });
 
     return themeFn;
 };

@@ -11,11 +11,10 @@ console.log(
 );
 
 console.log(
-    badge.green.inversed('theme', 'green'),
-    badge.blue.inversed('theme', 'blue'),
-    badge.red.inversed('theme', 'red'),
-    badge.yellow.inversed('theme', 'yellow'),
-    badge.magenta.inversed('theme', 'magenta'),
-    badge.cyan.inversed('theme', 'cyan'),
-    badge.theme('cyan').inversed('theme', 'cyan'),
+    badge.green.swapped('theme', 'green'),
+    badge.blue.swapped('theme', 'blue'),
+    badge.red.swapped('theme', 'red'),
+    badge.yellow.swapped('theme', 'yellow'),
+    badge.magenta('theme', 'magenta', { swapTheme: true }),
+    badge.theme('cyan').swapped('theme', 'cyan'),
 );

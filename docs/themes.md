@@ -6,7 +6,7 @@
 | `green` | ![theme-green](../images/theme-green.png) | `magenta` | ![theme-magenta](../images/theme-magenta.png) |
 | `red`   | ![theme-red](../images/theme-red.png)     | `yellow`  | ![theme-yellow](../images/theme-yellow.png)   |
 
-You can **invert** all themes, this means properties from label will be aplied to message and vice versa.
+You can **swap** all themes, this means properties from label will be aplied to message and vice versa.
 
 ## Example Usage 👀
 
@@ -18,19 +18,17 @@ console.log(
   badge.blue('label', 'blue'),
   badge.red('label', 'red'),
   badge.yellow('label', 'yellow'),
-  badge.magenta('label', 'magenta'),
-  badge.cyan('label', 'cyan'),
+  badge.magenta('label', 'magenta', { theme: 'magenta' }),
   badge.theme('cyan')('label', 'cyan')
 );
 
 console.log(
-  badge.green.inversed('label', 'green'),
-  badge.blue.inversed('label', 'blue'),
-  badge.red.inversed('label', 'red'),
-  badge.yellow.inversed('label', 'yellow'),
-  badge.magenta.inversed('label', 'magenta'),
-  badge.cyan.inversed('label', 'cyan'),
-  badge.theme('cyan').inversed('label', 'cyan')
+  badge.green.swapped('label', 'green'),
+  badge.blue.swapped('label', 'blue'),
+  badge.red.swapped('label', 'red'),
+  badge.yellow.swapped('label', 'yellow'),
+  badge.magenta('label', 'magenta', { swapTheme: true }),
+  badge.theme('cyan').swapped('label', 'cyan')
 );
 ```
 

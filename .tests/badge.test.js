@@ -112,6 +112,6 @@ test('badge.theme should work', () => {
 })
 
 test('badge.theme should work', () => {
-    const createEmptyBadge = () => badge.theme('red').inversed('test', 'label');
+    const createEmptyBadge = () => badge.theme('red').swapped('test', 'label');
     expect(createEmptyBadge).not.toThrow();
 })
