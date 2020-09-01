@@ -42,7 +42,7 @@ console.log(failedBadge, successBadge, skippedBadge);
 
 The above would output something similar to the terminal:
 
-![](./output-example.png)
+![](./images/output-example.png)
 
 You could also create a donate badge with a link ([if supported](#links)):
 
@@ -54,7 +54,7 @@ const donateBadge = badge.blue('❤️ donate', 'ko-fi', {
 console.log(donateBadge);
 ```
 
-![](./donate-output-example.png)
+![](./images/donate-output-example.png)
 
 You can also only show the label:
 
