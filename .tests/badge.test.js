@@ -91,11 +91,6 @@ test('Should work with forceLink', () => {
     expect(createEmptyBadge).not.toThrow();
 })
 
-test('Should return correctly formatted badge', () => {
-    const testBadge = badge('test', 'label', { labelBg: 32 });
-    expect(testBadge).toEqual('[48;5;32m[37m test [39m[49m[44m[37m label [39m[49m ');
-})
-
 test('Should work with theme', () => {
     const createEmptyBadge = () => badge('test', 'label', { theme: 'green' });
     expect(createEmptyBadge).not.toThrow();
@@ -113,5 +108,52 @@ test('badge.theme should work', () => {
 
 test('badge.theme should work', () => {
     const createEmptyBadge = () => badge.theme('red').swapped('test', 'label');
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('override label should work', () => {
+    badge.addTheme('replaceLbl', { label: 'hello' });
+    expect(
+        badge('lbl', 'msg', { theme: 'replaceLbl' })
+    ).toEqual("\u001b[100m\u001b[37m hello \u001b[39m\u001b[49m\u001b[44m\u001b[37m msg \u001b[39m\u001b[49m ");
+})
+
+
+test('override message should work', () => {
+    badge.addTheme('replaceLbl', { message: 'hello' });
+    expect(
+        badge('lbl', 'msg', { theme: 'replaceLbl' })
+    ).toEqual("\u001b[100m\u001b[37m lbl \u001b[39m\u001b[49m\u001b[44m\u001b[37m hello \u001b[39m\u001b[49m ");
+})
+
+// Xterm tests
+
+test('Label bg xterm [32]', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelBg: 32 });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Message bg xterm [32]', () => {
+    const createEmptyBadge = () => badge('test', 'label', { messageBg: 32 });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Label color xterm [32]', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelColor: 32 });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Message color xterm [32]', () => {
+    const createEmptyBadge = () => badge('test', 'label', { messageColor: 32 });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Label bg xterm [null]', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelBg: null });
+    expect(createEmptyBadge).not.toThrow();
+})
+
+test('Label bg xterm [-1]', () => {
+    const createEmptyBadge = () => badge('test', 'label', { labelBg: -1 });
     expect(createEmptyBadge).not.toThrow();
 })

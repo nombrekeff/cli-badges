@@ -4,7 +4,8 @@
   "description": "Quirky little node-js library for generating badges for your cli apps.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "add-badges": "istanbul-badges-readme"
   },
   "files": [
     "index.js",
@@ -19,6 +20,7 @@
     "terminal-link": "^2.1.1"
   },
   "devDependencies": {
+    "istanbul-badges-readme": "^1.0.5",
     "jest": "^26.4.2"
   },
   "repository": {

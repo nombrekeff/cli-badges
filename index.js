@@ -10,9 +10,8 @@ const formatters = {
     strike: (clc, s) => clc.strike(s),
     underline: (clc, s) => clc.underline(s),
 };
-const validXtermColor = (val) => val < 255 && val > 0;
+const validXtermColor = (val) => (val < 255 && val > 0);
 const isString = (val) => typeof val === 'string';
-const isNumber = (val) => typeof val === 'number';
 const colorExists = (val) => val in clc;
 const bgColorExists = (val) => `bg${cappitalize(val)}` in clc;
 const themeExists = (val) => val in themes;
@@ -34,9 +33,8 @@ const cappitalize = (string) => {
 };
 
 const getBgColor = (clc, color) => {
-    const isValidNumber = isNumber(color) && validXtermColor(color);
+    const isValidNumber = validXtermColor(color);
     const isValidString = isString(color) && bgColorExists(color);
-
     if (isValidNumber) return clc.bgXterm(color);
     if (isValidString) return clc[`bg${cappitalize(color)}`];
 
@@ -44,7 +42,7 @@ const getBgColor = (clc, color) => {
 };
 
 const getTextColor = (clc, color) => {
-    const isValidNumber = isNumber(color) && validXtermColor(color);
+    const isValidNumber = validXtermColor(color);
     const isValidString = isString(color) && colorExists(color);
 
     if (isValidNumber) return clc.xterm(color);
@@ -60,8 +58,9 @@ const format = (clc, s, formatter) => {
 
 const getOptionsForTheme = (theme, swapTheme) => {
     if (!themeExists(theme)) {
-        theme = 'blue';
+        return {};
     }
+
     const themeOpts = { ...themes[theme] };
 
     if (swapTheme) {

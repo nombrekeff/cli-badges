@@ -214,6 +214,7 @@ badge.addTheme('donate', {
 badge('', 'ko-fi', { theme: 'donate' });
 badge.donate('', 'ko-fi');
 ```
+
 ![](./images/donate.png)
 
 > You can also send in a PR and suggest a new inbuilt theme :)
@@ -237,6 +238,12 @@ You can check the complete list of themes [here](./docs/themes.md).
 
 - `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
 - `Deno` [@Delta456/cli_badges](https://github.com/Delta456/cli_badges)
+
+## Test Coverage
+
+| Statements                                                                  | Branches                                                                  | Functions                                                                  | Lines                                                                  |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) |
 
 ## Support the project
 
