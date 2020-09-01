@@ -187,11 +187,7 @@ You can check the complete list of themes [here](./docs/themes.md) .
 
 ## Other Libraries?
 
-# <<<<<<< HEAD
-
-> > > > > > > 1845411d52d347cfbfb90f26fe19634471553b9a
-
-cli-badges is also available in other languages:
+**cli-badges** is also available in other languages:
 
 - `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
 - `Deno` [@Delta456/cli_badges](https://github.com/Delta456/cli_badges)
