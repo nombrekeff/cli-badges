@@ -190,6 +190,8 @@ badge.green('label', 'green');
 badge.failed('theme', 'red');
 ```
 
+Options present in the theme will override the passed arguments. Missing arguments will have default values.
+
 ### Adding a theme <!-- omit in toc -->
 
 You can also add you own themes:
