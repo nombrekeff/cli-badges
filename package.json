@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "add-badges": "istanbul-badges-readme"
+    "add-badges": "istanbul-badges-readme",
+    "changelog": "standard-version"
   },
   "files": [
     "index.js",
     "themes.js",
     "README.md",
-    "output-example.png",
-    "donate-output-example.png",
     "images"
   ],
   "dependencies": {
@@ -21,7 +20,8 @@
   },
   "devDependencies": {
     "istanbul-badges-readme": "^1.0.5",
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "standard-version": "^9.0.0"
   },
   "repository": {
     "type": "git",
