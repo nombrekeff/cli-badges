@@ -89,26 +89,28 @@ export function badge(
     messageWidth?: number;
     link?: string;
     forceLink?: boolean;
+    theme?: string;
+    invertTheme?: boolean;
   }
 ): string;
 ```
 
 ## Available Options
 
-| Option         | Description                                                                                  | Type             | Default          |
-| :------------- | :------------------------------------------------------------------------------------------- | :--------------- | :--------------- |
-| `messageBg`    | Background [color](#colors) for the label                                                    | string or number | blue             |
-| `labelBg`      | Background [color](#colors) for the message                                                  | string or number | blackBright      |
-| `messageColor` | Text [color](#colors) for the message                                                        | string or number | white            |
-| `labelColor`   | Text [color](#colors) for the label                                                          | string or number | white            |
-| `labelWidth`   | Width of the label                                                                           | number           | label length + 2 |
-| `messageWidth` | Width of the message                                                                         | number           | label length + 2 |
-| `labelStyle`   | Style for the label text                                                                     | string           | `null`           |
-| `messageStyle` | Style for the label text                                                                     | string           | `null`           |
-| `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_)      | URL              | `null`           |
-| `forceLink`    | Force adding link even if not supported                                                      | boolean          | `false`          |
-| `theme`        | Theme to be used, see [all themes](./docs/themes.md)                                         | string           | `blue`           |
-| `invertTheme`  | invert all themes, this means properties from label will be aplied to message and vice versa | boolean          | `false`          |
+| Option         | Description                                                                                 | Type             | Default          |
+| :------------- | :------------------------------------------------------------------------------------------ | :--------------- | :--------------- |
+| `messageBg`    | Background [color](#colors) for the label                                                   | string or number | blue             |
+| `labelBg`      | Background [color](#colors) for the message                                                 | string or number | blackBright      |
+| `messageColor` | Text [color](#colors) for the message                                                       | string or number | white            |
+| `labelColor`   | Text [color](#colors) for the label                                                         | string or number | white            |
+| `labelWidth`   | Width of the label                                                                          | number           | label length + 2 |
+| `messageWidth` | Width of the message                                                                        | number           | label length + 2 |
+| `labelStyle`   | Style for the label text                                                                    | string           | `null`           |
+| `messageStyle` | Style for the label text                                                                    | string           | `null`           |
+| `link`         | Add a link when a badge is clicked (_only works in some terminals, see [this](#links)_)     | URL              | `null`           |
+| `forceLink`    | Force adding link even if not supported                                                     | boolean          | `false`          |
+| `theme`        | Theme to be used, see [all themes](./docs/themes.md)                                        | string           | `blue`           |
+| `invertTheme`  | Invert the theme, this means properties from label will be aplied to message and vice versa | boolean          | `false`          |
 
 ## Colors
 
@@ -184,10 +186,10 @@ badge.green.inversed('theme', 'green');
 You can check the complete list of themes [here](./docs/themes.md) .
 
 ## Other Libraries?
-<<<<<<< HEAD
-=======
 
->>>>>>> 1845411d52d347cfbfb90f26fe19634471553b9a
+# <<<<<<< HEAD
+
+> > > > > > > 1845411d52d347cfbfb90f26fe19634471553b9a
 
 cli-badges is also available in other languages:
 
