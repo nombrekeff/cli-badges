@@ -11,6 +11,20 @@
 
 ---
 
+## Table Of Contents
+
+- [Getting Started](#getting-started)
+  - [Installing](#installing)
+  - [Usage](#usage)
+- [Available Options](#available-options)
+- [Colors](#colors)
+- [Styles](#styles)
+- [Links](#links)
+- [Themes](#themes)
+- [Other Libraries?](#other-libraries)
+
+---
+
 ## Getting Started
 
 ### Installing
@@ -66,11 +80,11 @@ console.log(onlyLabel);
 
 > ###### Example output is a mock, console output will vary slightly from terminal to terminal.
 
-## Badge Structure
+## Badge Structure <!-- omit in toc -->
 
 A badge is conformed of a label and a message `<label>:<message>`. Each segment can be customized, by changing bg color, text color and style.
 
-## API
+## API <!-- omit in toc -->
 
 `cli-badges` exports a method called `badge`.
 
@@ -116,7 +130,7 @@ export function badge(
 
 `cli-badges` uses [`cli-color`](https://github.com/medikoo/cli-color#colors) internally for managing colors, you can check the list of available colors there. Take into account that when setting a color you don't need to pass the prefix `bg`, it's handled for you. ie: `blackBright` instead of `bgBlackBright`
 
-### Available colors
+### Available colors <!-- omit in toc -->
 
 - `black`
 - `red`
@@ -135,7 +149,7 @@ export function badge(
 - `cyanBright`
 - `whiteBright`
 
-#### Xterm colors
+#### Xterm colors <!-- omit in toc -->
 
 There are more colors available using xterm colors, see [cli-color xterm colors](https://github.com/medikoo/cli-color#xterm-colors-256-colors-table) for the complete list of available colors.
 
@@ -145,7 +159,7 @@ There are more colors available using xterm colors, see [cli-color xterm colors]
 
 **cli-badges** uses [`cli-color`](https://github.com/medikoo/cli-color#styles) internally for managing styles, you can check the list of available styles there.
 
-### Available Styles
+### Available Styles <!-- omit in toc -->
 
 - bold
 - italic
@@ -175,7 +189,7 @@ Themes are a way to store badge configuration for repeated use. All the options 
 
 The library comes with a set of inbuilt themes:
 
-#### Inbuilt Themes
+#### Inbuilt Themes <!-- omit in toc -->
 
 - **red** : Red Message Background
 - **green** : Green Message Background
@@ -186,7 +200,7 @@ The library comes with a set of inbuilt themes:
 - **success** : (_'Success'_) Message on Green Background
 - **failed** : (_'Failed'_) Message on Red Background
 
-#### Using Themes
+#### Using Themes <!-- omit in toc -->
 
 You can use the themes in various ways, passing an option `theme` to badge:
 
@@ -202,7 +216,7 @@ badge.green('label', 'green');
 badge.failed('theme', 'red');
 ```
 
-### Adding a theme
+### Adding a theme <!-- omit in toc -->
 
 You can also add you own themes:
 
@@ -219,7 +233,7 @@ badge.donate('', 'ko-fi');
 
 > You can also send in a PR and suggest a new inbuilt theme :)
 
-#### Swap Properties
+#### Swap Properties <!-- omit in toc -->
 
 You can also **swap** all themes, this means properties from label will be aplied to message and vice versa.
 
@@ -239,13 +253,13 @@ You can check the complete list of themes [here](./docs/themes.md).
 - `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
 - `Deno` [@Delta456/cli_badges](https://github.com/Delta456/cli_badges)
 
-## Test Coverage
+## Test Coverage <!-- omit in toc -->
 
 | Statements                                                                  | Branches                                                                  | Functions                                                                  | Lines                                                                  |
 | --------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg) |
 
-## Support the project
+## Support the project <!-- omit in toc -->
 
 I tend to open source anything I can, and love to help people that need help with the project.
 
