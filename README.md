@@ -202,6 +202,20 @@ badge.green('label', 'green');
 badge.failed('theme', 'red');
 ```
 
+### Adding a theme
+
+You can also add you own themes:
+
+```js
+badge.addTheme('donate', {
+  label: '❤️ donate',
+});
+
+badge('label', 'green', { theme: 'donate' });
+```
+
+> You can also send in a PR and suggest a new inbuilt theme :)
+
 #### Swap Properties
 
 You can also **swap** all themes, this means properties from label will be aplied to message and vice versa.

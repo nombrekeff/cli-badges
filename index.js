@@ -78,6 +78,10 @@ const getOptionsForTheme = (theme, swapTheme) => {
 };
 
 const DEFAULT_OPTIONS = {
+    messageBg: 'blue',
+    labelBg: 'blackBright',
+    labelColor: 'white',
+    messageColor: 'white',
     messageStyle: null,
     messageWidth: null,
     labelStyle: null,
@@ -89,14 +93,17 @@ const DEFAULT_OPTIONS = {
     ...themes['blue'],
 };
 
-const makeBadge = (label = '', message = '', options = DEFAULT_OPTIONS) => {
+const makeBadge = (label = '', message = '', options = {}) => {
     const themeOpts = getOptionsForTheme(options.theme, options.swapTheme);
 
     const {
         messageBg, messageColor, messageStyle, messageWidth,
         labelBg, labelColor, labelStyle, labelWidth,
         link, forceLink,
-    } = { ...themeOpts, ...options };
+    } = { ...DEFAULT_OPTIONS, ...options, ...themeOpts, };
+
+    if (themeOpts.label) label = themeOpts.label;
+    if (themeOpts.message) message = themeOpts.message;
 
     const lblColorer = getTextColor(getBgColor(clc, labelBg), labelColor);
     const msgColorer = getTextColor(getBgColor(clc, messageBg), messageColor);
@@ -115,17 +122,24 @@ const makeBadge = (label = '', message = '', options = DEFAULT_OPTIONS) => {
 
 const createThemeFn = (theme) => {
     const themeFn = (label, message, options = {}) => makeBadge(label, message, { ...options, theme });
-
     themeFn.swapped = (label, message, options) => themeFn(label, message, { ...options, swapTheme: true });
-
     return themeFn;
 };
 
 // Create theme methods
 const themeNames = Object.keys(themes);
-themeNames.forEach((name) => {
+const registerThemeFn = (name) => {
     makeBadge[name] = createThemeFn(name);
-});
+}
+themeNames.forEach(registerThemeFn);
+
+// function to add new theme
+makeBadge.addTheme = (name, options) => {
+    themes[name] = options;
+    registerThemeFn(name);
+};
+
+// Shorthand for createThemeFn
 makeBadge.theme = (theme) => createThemeFn(theme);
 
 module.exports = { badge: makeBadge };

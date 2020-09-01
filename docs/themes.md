@@ -1,6 +1,6 @@
 # Themes
 
-![](./images/themes-preview.png)
+![](../images/themes-preview.png)
 
 Themes are a way to store badge configuration for repeated use. All the options (_except for the theme option, obviously_) that are needed by the badge can be stored by making a theme.
 
