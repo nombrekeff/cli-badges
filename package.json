@@ -3,8 +3,8 @@
   "version": "1.4.0",
   "description": "Quirky little node-js library for generating badges for your cli apps.",
   "main": "index.js",
-  "directories": {
-    "example": "example"
+  "scripts": {
+    "test": "jest"
   },
   "files": [
     "./index.js",
@@ -18,9 +18,6 @@
   },
   "devDependencies": {
     "jest": "^26.4.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
