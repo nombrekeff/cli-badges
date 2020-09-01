@@ -14,29 +14,59 @@ Themes are a way to store badge configuration for repeated use. All the options 
 
 You can also **swap** all themes, this means properties from label will be aplied to message and vice versa.
 
-## Example Usage 👀
+## Inbuilt Themes
+
+- **red** : Red Message Background
+- **green** : Green Message Background
+- **blue** : Blue Message Background
+- **yellow** : Black Colored Message on Yellow Background
+- **cyan** : Black Colored Message on Cyan Background
+- **magenta** : Black Colored Message on Magenta Background
+- **success** : (_'Success'_) Message on Green Background
+- **failed** : (_'Failed'_) Message on Red Background
+
+## Using Themes
+
+You can use the themes in various ways, passing an option `theme` to badge:
 
 ```js
-const { badge } = require('../index');
-
-console.log(
-  badge.green('label', 'green'),
-  badge.blue('label', 'blue'),
-  badge.red('label', 'red'),
-  badge.yellow('label', 'yellow'),
-  badge.magenta('label', 'magenta', { theme: 'magenta' }),
-  badge.theme('cyan')('label', 'cyan')
-);
-
-console.log(
-  badge.green.swapped('label', 'green'),
-  badge.blue.swapped('label', 'blue'),
-  badge.red.swapped('label', 'red'),
-  badge.yellow.swapped('label', 'yellow'),
-  badge.magenta('label', 'magenta', { swapTheme: true }),
-  badge.theme('cyan').swapped('label', 'cyan')
-);
+badge('label', 'green', { theme: 'green' });
+badge('label', 'magenta', { theme: 'magenta', swapTheme: true });
 ```
+
+Or there are helper methods for ease of use:
+
+```js
+badge.green('label', 'green');
+badge.failed('theme', 'red');
+```
+
+## Adding a theme
+
+You can also add you own themes:
+
+```js
+badge.addTheme('donate', {
+  label: '❤️ donate',
+});
+
+badge('', 'ko-fi', { theme: 'donate' });
+badge.donate('', 'ko-fi');
+```
+![](../images/donate.png)
+
+> You can also send in a PR and suggest a new inbuilt theme :)
+
+## Swap Properties
+
+You can also **swap** all themes, this means properties from label will be aplied to message and vice versa.
+
+```js
+badge.failed('theme', 'red');
+badge.failed.swap('theme', 'red');
+```
+
+![](./images/swap-example.png)
 
 ## Contributing 💕
 

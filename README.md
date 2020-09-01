@@ -211,8 +211,10 @@ badge.addTheme('donate', {
   label: '❤️ donate',
 });
 
-badge('label', 'green', { theme: 'donate' });
+badge('', 'ko-fi', { theme: 'donate' });
+badge.donate('', 'ko-fi');
 ```
+![](./images/donate.png)
 
 > You can also send in a PR and suggest a new inbuilt theme :)
 
