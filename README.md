@@ -131,25 +131,6 @@ export function badge(
 
 `cli-badges` uses [`cli-color`](https://github.com/medikoo/cli-color#colors) internally for managing colors, you can check the list of available colors there. Take into account that when setting a color you don't need to pass the prefix `bg`, it's handled for you. ie: `blackBright` instead of `bgBlackBright`
 
-### Available colors <!-- omit in toc -->
-
-- `black`
-- `red`
-- `green`
-- `yellow`
-- `blue`
-- `magenta`
-- `cyan`
-- `white`
-- `blackBright`
-- `redBright`
-- `greenBright`
-- `yellowBright`
-- `blueBright`
-- `magentaBright`
-- `cyanBright`
-- `whiteBright`
-
 #### Xterm colors <!-- omit in toc -->
 
 There are more colors available using xterm colors, see [cli-color xterm colors](https://github.com/medikoo/cli-color#xterm-colors-256-colors-table) for the complete list of available colors.
@@ -159,14 +140,6 @@ There are more colors available using xterm colors, see [cli-color xterm colors]
 ## Styles
 
 **cli-badges** uses [`cli-color`](https://github.com/medikoo/cli-color#styles) internally for managing styles, you can check the list of available styles there.
-
-### Available Styles <!-- omit in toc -->
-
-- bold
-- italic
-- inverse
-- strike
-- underline
 
 > Styles will display correctly if font used in your console supports them.
 
