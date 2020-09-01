@@ -6,7 +6,7 @@
 | `green` | ![theme-green](../images/theme-green.png) | `magenta` | ![theme-magenta](../images/theme-magenta.png) |
 | `red`   | ![theme-red](../images/theme-red.png)     | `yellow`  | ![theme-yellow](../images/theme-yellow.png)   |
 
-You can **swap** all themes, this means properties from label will be aplied to message and vice versa.
+You can also **swap** all themes, this means properties from label will be aplied to message and vice versa.
 
 ## Example Usage 👀
 
