@@ -11,8 +11,9 @@
 
 ---
 
-## Table Of Contents
+## Table Of Contents
 
+- [Table Of Contents](#table-of-contents)
 - [Getting Started](#getting-started)
   - [Installing](#installing)
   - [Usage](#usage)
