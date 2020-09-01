@@ -184,6 +184,10 @@ badge.green.inversed('theme', 'green');
 You can check the complete list of themes [here](./docs/themes.md) .
 
 ## Other Libraries?
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1845411d52d347cfbfb90f26fe19634471553b9a
 
 cli-badges is also available in other languages:
 

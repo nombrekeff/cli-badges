@@ -1,14 +1,15 @@
 {
   "name": "cli-badges",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Quirky little node-js library for generating badges for your cli apps.",
   "main": "index.js",
   "files": [
-    "./index.js",
-    "./themes.js",
-    "./README.md",
-    "./output-example.png",
-    "./donate-output-example.png"
+    "index.js",
+    "themes.js",
+    "README.md",
+    "output-example.png",
+    "donate-output-example.png",
+    "images"
   ],
   "dependencies": {
     "cli-color": "^2.0.0",
@@ -16,9 +17,6 @@
   },
   "devDependencies": {
     "jest": "^26.4.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
