@@ -190,7 +190,7 @@ badge.green('label', 'green');
 badge.failed('theme', 'red');
 ```
 
-Options present in the theme will override the passed arguments. Missing arguments will have default values.
+Options present in the theme will override options passed. Missing options will have default values.
 
 ### Adding a theme <!-- omit in toc -->
 
