@@ -209,7 +209,7 @@ badge.donate('', 'ko-fi');
 
 > You can also send in a PR and suggest a new inbuilt theme :)
 
-#### Swap Properties <!-- omit in toc -->
+### Swap Properties <!-- omit in toc -->
 
 You can also **swap** all themes, this means properties from label will be aplied to message and vice versa.
 
