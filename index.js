@@ -121,12 +121,11 @@ const createThemeFn = (theme) => {
     return themeFn;
 };
 
-makeBadge.green = createThemeFn('green');
-makeBadge.red = createThemeFn('red');
-makeBadge.blue = createThemeFn('blue');
-makeBadge.cyan = createThemeFn('cyan');
-makeBadge.yellow = createThemeFn('yellow');
-makeBadge.magenta = createThemeFn('magenta');
+// Create theme methods
+const themeNames = Object.keys(themes);
+themeNames.forEach((name) => {
+    makeBadge[name] = createThemeFn(name);
+});
 makeBadge.theme = (theme) => createThemeFn(theme);
 
 module.exports = { badge: makeBadge };
