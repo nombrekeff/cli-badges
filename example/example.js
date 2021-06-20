@@ -10,21 +10,25 @@ console.log(
         messageStyle: null,
         labelStyle: null,
         link: null,
-    })
+    }),
 );
 
 // Styles:
 //  - bold
 //  - italic
 console.log(
-    badge('test', 'italic', { labelStyle: 'bold', messageStyle: 'italic', messageWidth: '16' }),
+    badge('test', 'italic', { 
+        labelStyle: 'bold', 
+        messageStyle: 'italic', 
+        messageWidth: '16' 
+    }),
 );
 
 // Colors
 // See https://www.npmjs.com/package/cli-color#colors
 // You just need to pass in the name of the color, cyan instead of bgCyan, or greenBright instead of bgGreenBright
 console.log(
-    badge('test', 'badge', { messageBg: 'cyan' }),
+    badge.cyan('test', 'badge'),
     badge('test', 'badge', {
         messageBg: 'yellow',
         labelBg: 'blackBright',

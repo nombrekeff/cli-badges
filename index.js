@@ -1,7 +1,21 @@
 const clc = require('cli-color');
 const terminalLink = require('terminal-link');
+const themes = require('./themes.js');
 
-const padd = (string, width) => {
+const formatters = {
+    bold: (clc, s) => clc.bold(s),
+    italic: (clc, s) => clc.italic(s),
+    inverse: (clc, s) => clc.inverse(s),
+    blink: (clc, s) => clc.blink(s),
+    strike: (clc, s) => clc.strike(s),
+    underline: (clc, s) => clc.underline(s),
+};
+const validXtermColor = (val) => (val < 255 && val > 0);
+const isString = (val) => typeof val === 'string';
+const colorExists = (val) => val in clc;
+const bgColorExists = (val) => `bg${cappitalize(val)}` in clc;
+
+const paddToFitWidth = (string, width) => {
     const sLength = string.length;
 
     if (!width) width = sLength + 2; // one space on each side
@@ -18,32 +32,22 @@ const cappitalize = (string) => {
 };
 
 const getBgColor = (clc, color) => {
-    const isString = typeof color === 'string';
-    const isNumber = typeof color === 'number';
-
-    if (isString) return clc[`bg${cappitalize(color)}`];
-    if (isNumber) return clc.bgXterm(color);
+    const isValidNumber = validXtermColor(color);
+    const isValidString = isString(color) && bgColorExists(color);
+    if (isValidNumber) return clc.bgXterm(color);
+    if (isValidString) return clc[`bg${cappitalize(color)}`];
 
     return clc.bgBlue;
 };
 
 const getTextColor = (clc, color) => {
-    const isString = typeof color === 'string';
-    const isNumber = typeof color === 'number';
+    const isValidNumber = validXtermColor(color);
+    const isValidString = isString(color) && colorExists(color);
 
-    if (isString) return clc[color];
-    if (isNumber) return clc.xterm(color);
+    if (isValidNumber) return clc.xterm(color);
+    if (isValidString) return clc[color];
 
-    return clc.blue;
-};
-
-const formatters = {
-    bold: (clc, s) => clc.bold(s),
-    italic: (clc, s) => clc.italic(s),
-    inverse: (clc, s) => clc.inverse(s),
-    blink: (clc, s) => clc.blink(s),
-    strike: (clc, s) => clc.strike(s),
-    underline: (clc, s) => clc.underline(s),
+    return clc.white;
 };
 
 const format = (clc, s, formatter) => {
@@ -51,23 +55,62 @@ const format = (clc, s, formatter) => {
     return f ? f(clc, s) : clc(s);
 };
 
-const makeBadge = (label = '', message = '', {
-    messageBg = 'blue',
-    labelBg = 'blackBright',
-    messageColor = 'white',
-    labelColor = 'white',
-    messageStyle = null,
-    labelStyle = null,
-    labelWidth = null,
-    messageWidth = null,
-    link = null,
-    forceLink = false,
-} = {}) => {
+const getOptionsForTheme = (theme, swapTheme) => {
+    if (!themes.exists(theme)) {
+        return {};
+    }
+
+    const themeOpts = { ...themes[theme] };
+
+    if (swapTheme) {
+        const pLblColor = themeOpts.labelColor;
+        themeOpts.labelColor = themeOpts.messageColor;
+        themeOpts.messageColor = pLblColor;
+
+        const pLblBg = themeOpts.labelBg;
+        themeOpts.labelBg = themeOpts.messageBg;
+        themeOpts.messageBg = pLblBg;
+    }
+
+    return themeOpts;
+};
+
+const DEFAULT_OPTIONS = {
+    messageBg: 'blue',
+    labelBg: 'blackBright',
+    labelColor: 'white',
+    messageColor: 'white',
+    messageStyle: null,
+    messageWidth: null,
+    labelStyle: null,
+    labelWidth: null,
+    link: null,
+    forceLink: false,
+    theme: 'blue',
+    swapTheme: false,
+    ...themes['blue'],
+};
+
+const makeBadge = (label = '', message = '', options = {}) => {
+    const themeOpts = getOptionsForTheme(options.theme, options.swapTheme);
+
+    const {
+        messageBg, messageColor, messageStyle, messageWidth,
+        labelBg, labelColor, labelStyle, labelWidth,
+        link, forceLink,
+    } = { ...DEFAULT_OPTIONS, ...options, ...themeOpts, };
+
+    if (themeOpts.label) label = themeOpts.label;
+    if (themeOpts.message) message = themeOpts.message;
+
     const lblColorer = getTextColor(getBgColor(clc, labelBg), labelColor);
     const msgColorer = getTextColor(getBgColor(clc, messageBg), messageColor);
 
-    const lblFormatted = format(lblColorer, padd(label, labelWidth), labelStyle);
-    const msgFormatted = format(msgColorer, padd(message, messageWidth), messageStyle);
+    const paddedLbl = paddToFitWidth(label, labelWidth);
+    const paddedMsg = paddToFitWidth(message, messageWidth);
+
+    const lblFormatted = format(lblColorer, paddedLbl, labelStyle);
+    const msgFormatted = format(msgColorer, paddedMsg, messageStyle);
 
     const badge = `${label && lblFormatted}${message && msgFormatted} `;
     const makeLink = link && terminalLink.isSupported;
@@ -75,6 +118,26 @@ const makeBadge = (label = '', message = '', {
     return (makeLink || forceLink) ? terminalLink(badge, link) : badge;
 };
 
-module.exports = {
-    badge: makeBadge,
+const createThemeFn = (theme) => {
+    const themeFn = (label, message, options = {}) => makeBadge(label, message, { ...options, theme });
+    themeFn.swapped = (label, message, options) => themeFn(label, message, { ...options, swapTheme: true });
+    return themeFn;
 };
+
+// Create theme methods
+const themeNames = Object.keys(themes);
+const registerThemeFn = (name) => {
+    makeBadge[name] = createThemeFn(name);
+}
+themeNames.forEach(registerThemeFn);
+
+// function to add new theme
+makeBadge.addTheme = (name, options) => {
+    themes[name] = options;
+    registerThemeFn(name);
+};
+
+// Shorthand for createThemeFn
+makeBadge.theme = (theme) => createThemeFn(theme);
+
+module.exports = { badge: makeBadge };
