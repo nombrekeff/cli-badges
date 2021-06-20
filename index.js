@@ -1,59 +1,12 @@
 const clc = require('cli-color');
 const terminalLink = require('terminal-link');
 const themes = require('./themes.js');
-
-const formatters = {
-    bold: (clc, s) => clc.bold(s),
-    italic: (clc, s) => clc.italic(s),
-    inverse: (clc, s) => clc.inverse(s),
-    blink: (clc, s) => clc.blink(s),
-    strike: (clc, s) => clc.strike(s),
-    underline: (clc, s) => clc.underline(s),
-};
-const validXtermColor = (val) => (val < 255 && val > 0);
-const isString = (val) => typeof val === 'string';
-const colorExists = (val) => val in clc;
-const bgColorExists = (val) => `bg${cappitalize(val)}` in clc;
-
-const paddToFitWidth = (string, width) => {
-    const sLength = string.length;
-
-    if (!width) width = sLength + 2; // one space on each side
-
-    const halfWith = Math.ceil((width - sLength) / 2);
-    const paddStr = ' '.repeat(halfWith);
-
-    return paddStr + string + paddStr;
-};
-
-const cappitalize = (string) => {
-    return string.charAt(0).toUpperCase()
-        + string.substring(1, string.length);
-};
-
-const getBgColor = (clc, color) => {
-    const isValidNumber = validXtermColor(color);
-    const isValidString = isString(color) && bgColorExists(color);
-    if (isValidNumber) return clc.bgXterm(color);
-    if (isValidString) return clc[`bg${cappitalize(color)}`];
-
-    return clc.bgBlue;
-};
-
-const getTextColor = (clc, color) => {
-    const isValidNumber = validXtermColor(color);
-    const isValidString = isString(color) && colorExists(color);
-
-    if (isValidNumber) return clc.xterm(color);
-    if (isValidString) return clc[color];
-
-    return clc.white;
-};
-
-const format = (clc, s, formatter) => {
-    let f = formatters[formatter];
-    return f ? f(clc, s) : clc(s);
-};
+const {
+    paddToFitWidth, 
+    getBgColor,
+    getTextColor,
+    format,
+} = require('./util.js');
 
 const getOptionsForTheme = (theme, swapTheme) => {
     if (!themes.exists(theme)) {
@@ -93,12 +46,12 @@ const DEFAULT_OPTIONS = {
 
 const makeBadge = (label = '', message = '', options = {}) => {
     const themeOpts = getOptionsForTheme(options.theme, options.swapTheme);
-
+    const allOptions = { ...DEFAULT_OPTIONS, ...options, ...themeOpts, };
     const {
         messageBg, messageColor, messageStyle, messageWidth,
         labelBg, labelColor, labelStyle, labelWidth,
         link, forceLink,
-    } = { ...DEFAULT_OPTIONS, ...options, ...themeOpts, };
+    } = allOptions;
 
     if (themeOpts.label) label = themeOpts.label;
     if (themeOpts.message) message = themeOpts.message;

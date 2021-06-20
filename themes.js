@@ -51,5 +51,5 @@ const themes = {
 
 module.exports = {
     ...themes,
-    exists: (val) => val in themes,
+    exists(val) { return val in this; },
 };
