@@ -1,4 +1,4 @@
-var themes = {
+const themes = {
     blue: {
         messageBg: 'blue',
         labelBg: 'blackBright',
@@ -49,4 +49,7 @@ var themes = {
     },
 };
 
-module.exports = themes;
+module.exports = {
+    ...themes,
+    exists(val) { return val in this; },
+};
