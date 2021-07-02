@@ -43,13 +43,8 @@ This is a simple example, using badges to display test results:
 ```js
 const { badge } = require('cli-badges');
 
-const failedBadge = badge('failed', '2', {
-  messageBg: 'red',
-});
-const skippedBadge = badge('skipped', '2', {
-  messageBg: 'yellow',
-  messageColor: 'white',
-});
+const failedBadge  = badge.error('failed', '2');
+const skippedBadge = badge.yellow('skipped', '2');
 const successBadge = badge.green('success', '2');
 
 console.log(failedBadge, successBadge, skippedBadge);
