@@ -11,6 +11,7 @@
   "files": [
     "index.js",
     "themes.js",
+    "util.js",
     "README.md",
     "images"
   ],
