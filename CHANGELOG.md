@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.5.2](https://github.com/nombrekeff/cli-badges/compare/v1.5.0...v1.5.2) (2021-07-02)
 
-
 ### Bug Fixes
 
 * add missing file util.js to npm package ([054c360](https://github.com/nombrekeff/cli-badges/commit/054c36033d694e63ad0c9dff1a48d758de842848))

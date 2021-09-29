@@ -52,4 +52,23 @@ const themes = {
 module.exports = {
     ...themes,
     exists(val) { return val in this; },
+    getOptionsForTheme(theme, swapTheme) {
+        if (!this.exists(theme)) {
+            return {};
+        }
+
+        const themeOpts = { ...this[theme] };
+
+        if (swapTheme) {
+            const pLblColor = themeOpts.labelColor;
+            themeOpts.labelColor = themeOpts.messageColor;
+            themeOpts.messageColor = pLblColor;
+
+            const pLblBg = themeOpts.labelBg;
+            themeOpts.labelBg = themeOpts.messageBg;
+            themeOpts.messageBg = pLblBg;
+        }
+
+        return themeOpts;
+    }
 };

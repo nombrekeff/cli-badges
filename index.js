@@ -2,31 +2,11 @@ const clc = require('cli-color');
 const terminalLink = require('terminal-link');
 const themes = require('./themes.js');
 const {
-    paddToFitWidth, 
+    paddToFitWidth,
     getBgColor,
     getTextColor,
     format,
 } = require('./util.js');
-
-const getOptionsForTheme = (theme, swapTheme) => {
-    if (!themes.exists(theme)) {
-        return {};
-    }
-
-    const themeOpts = { ...themes[theme] };
-
-    if (swapTheme) {
-        const pLblColor = themeOpts.labelColor;
-        themeOpts.labelColor = themeOpts.messageColor;
-        themeOpts.messageColor = pLblColor;
-
-        const pLblBg = themeOpts.labelBg;
-        themeOpts.labelBg = themeOpts.messageBg;
-        themeOpts.messageBg = pLblBg;
-    }
-
-    return themeOpts;
-};
 
 const DEFAULT_OPTIONS = {
     messageBg: 'blue',
@@ -44,8 +24,16 @@ const DEFAULT_OPTIONS = {
     ...themes['blue'],
 };
 
+/**
+ * Main function to create badge. 
+ * 
+ * @example
+ * ```js
+ * badge('label', 'value', { theme: 'green' });
+ * ```
+ */
 const makeBadge = (label = '', message = '', options = {}) => {
-    const themeOpts = getOptionsForTheme(options.theme, options.swapTheme);
+    const themeOpts = themes.getOptionsForTheme(options.theme, options.swapTheme);
     const allOptions = { ...DEFAULT_OPTIONS, ...options, ...themeOpts, };
     const {
         messageBg, messageColor, messageStyle, messageWidth,
@@ -73,24 +61,35 @@ const makeBadge = (label = '', message = '', options = {}) => {
 
 const createThemeFn = (theme) => {
     const themeFn = (label, message, options = {}) => makeBadge(label, message, { ...options, theme });
-    themeFn.swapped = (label, message, options) => themeFn(label, message, { ...options, swapTheme: true });
+    themeFn.swapped = (label, message, options = {}) => themeFn(label, message, { ...options, swapTheme: true });
     return themeFn;
 };
 
-// Create theme methods
-const themeNames = Object.keys(themes);
+
 const registerThemeFn = (name) => {
     makeBadge[name] = createThemeFn(name);
 }
+
+/** List of all available theme names */
+const themeNames = Object.keys(themes);
 themeNames.forEach(registerThemeFn);
 
-// function to add new theme
+/**
+ * Function used to register new themes
+ * 
+ * @example
+ * ```js
+ * badge.addTheme('new-theme', { // theme options  });
+ * ```
+ */
 makeBadge.addTheme = (name, options) => {
     themes[name] = options;
     registerThemeFn(name);
 };
 
-// Shorthand for createThemeFn
 makeBadge.theme = (theme) => createThemeFn(theme);
 
-module.exports = { badge: makeBadge };
+module.exports = {
+    badge: makeBadge,
+    availableThemes: themeNames,
+};
