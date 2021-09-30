@@ -217,12 +217,13 @@ badge.failed.swap('theme', 'red');
 
 You can check the complete list of themes [here](./docs/themes.md).
 
-## Other Libraries?
+## Want badges for some other environment or language?
 
 **cli-badges** is also available in other languages:
 
 - `Python` [@haideralipunjabi/cli-badges](https://github.com/haideralipunjabi/cli-badges)
 - `Deno` [@Delta456/cli_badges](https://github.com/Delta456/cli_badges)
+- `Dart` [@nombrekeff/cli_badges_dart](https://github.com/nombrekeff/cli_badges_dart)
 
 ## Test Coverage <!-- omit in toc -->
 
